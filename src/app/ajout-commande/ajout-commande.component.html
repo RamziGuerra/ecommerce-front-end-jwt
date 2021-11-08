@@ -1,0 +1,78 @@
+<br>
+<br>
+<br>
+<div class="card col-md-8 offset-md-2">
+    <div class="card-header">
+        <span>Nouvelle commande</span>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="exampleFormControlInput1"  class="form-label">Numero</label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="exampleFormControlInput1"  class="form-label">Date</label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="exampleFormControlInput1"  class="form-label">Montant</label>
+                <input type="text" readonly class="form-control">
+              </div>
+
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="exampleFormControlInput1" class="form-label">Produit</label>
+                    <input name="ligneCommandeTemp.produit" type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="exampleFormControlInput1" class="form-label">Quantité</label>
+                    <input name="ligneCommandeTemp.quantite" type="text" class="form-control">
+                  </div>
+                  <div class="col-md-2">
+                    <button class="btn btn-success" type="button" (click)="ajouterLigneCommande()">Ajouter</button>
+                  </div>
+                  
+            </div>
+             
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Quantite</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let lc of lignesCommande">
+                   
+                    <tr>
+                        <td>
+                            {{lc.produit}}
+                        </td>
+                        <td>
+                           {{lc.quantite}} 
+                        </td>
+                        <td>
+                            25
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>  
+    </div>        
+    <div>      
+           
+
+        
+          
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-default me-md-2" type="button">Anuuler</button>
+            <button class="btn btn-primary" type="button">Ajouter</button>
+          </div>
+    </div>
+    
+    
+
+</div>
