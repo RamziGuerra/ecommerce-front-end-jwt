@@ -18,6 +18,7 @@ export class AjoutCommandeComponent implements OnInit {
 
   ngOnInit(): void {
     this.commande = new Commande();
+    this.commande.numero = (Math.random() * 100).toString();
     this.carnetCommandeTemp = new CarnetCommande();
     this.commande.carnets = [];
   }

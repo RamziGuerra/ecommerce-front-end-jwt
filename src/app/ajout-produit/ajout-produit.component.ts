@@ -33,6 +33,9 @@ export class AjoutProduitComponent implements OnInit {
     })
   }
   affecterCategorie(event: any) {
+    alert(JSON.stringify(event));
+    console.log(JSON.stringify(this.produit));
+    console.log(JSON.stringify(this.produit.categorie));
     this.produit.categorie = event;
   }
 
