@@ -13,8 +13,10 @@ export class CommandesComponent implements OnInit {
   constructor(private commandeService: CommandeService) { }
 
   ngOnInit(): void {
-    this.commandeService.query(data => {
+    this.commandeService.query().subscribe(data => {
       this.commandes = data.body;
+    }, error => {
+      console.log(error);
     });
   }
 

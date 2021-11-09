@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { SERVER_API_URL } from '../app.constants';
@@ -11,12 +11,18 @@ type EntityArrayResponseType = HttpResponse<IProduit[]>;
 
 @Injectable({ providedIn: 'root' })
 export class ProduitService {
-  public resourceUrl = SERVER_API_URL + '/produits';
+  public resourceUrl = SERVER_API_URL + '/api/produits';
+  headers = new HttpHeaders()
+      .append('Content-Type', 'application/json')
+      .append('Access-Control-Allow-Headers', 'Content-Type')
+      .append('Access-Control-Allow-Methods', '*')
+      .append('Access-Control-Allow-Origin', '*');
 
   constructor(protected http: HttpClient) {}
 
   create(produit: IProduit): Observable<EntityResponseType> {
-    return this.http.post<IProduit>(this.resourceUrl, produit, { observe: 'response' });
+
+    return this.http.post<IProduit>(this.resourceUrl, produit, { observe: 'response', headers: this.headers });
   }
 
   update(produit: IProduit): Observable<EntityResponseType> {
@@ -29,7 +35,7 @@ export class ProduitService {
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<IProduit[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http.get<IProduit[]>(this.resourceUrl, { params: options, observe: 'response', headers: this.headers });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

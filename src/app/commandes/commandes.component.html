@@ -13,9 +13,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let commande of commandes">
-      <th scope="row">commande.numero</th>
-      <td>commande.date</td>
-      <td>commande.prixTotal</td>
+      <th scope="row">{{commande.numero}}</th>
+      <td>{{commande.date}}</td>
+      <td>{{commande.prixTotal}}</td>
       <td>
         <ul *ngIf="commande.carnets && commande.carnets.length > 0"class="list-group">
           <li *ngFor="let c of commande.carnets" class="list-group-item">{{c.produit.code}} ({{c.qte}} article(s)) : montant {{c.prixTotal}}</li>

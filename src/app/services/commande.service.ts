@@ -14,7 +14,7 @@ type EntityArrayResponseType = HttpResponse<ICommande[]>;
 
 @Injectable({ providedIn: 'root' })
 export class CommandeService {
-  public resourceUrl = SERVER_API_URL + 'api/commandes';
+  public resourceUrl = SERVER_API_URL + '/api/orders';
 
   constructor(protected http: HttpClient) {}
 
