@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CarnetCommande, ICarnetCommande } from '../model/carnet-commande.model';
+import { Commande, ICommande } from '../model/commande.model';
+import { CommandeService } from '../services/commande.service';
 
 @Component({
   selector: 'app-ajout-commande',
@@ -7,16 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AjoutCommandeComponent implements OnInit {
 
-  lignesCommande = [];
-  ligneCommandeTemp;
-  commande: any
-  constructor() { }
+  commande : ICommande;
+  carnetCommandeTemp: ICarnetCommande;
+
+  
+  constructor(private commandeService: CommandeService) { }
 
   ngOnInit(): void {
+    this.commande = new Commande();
+    this.carnetCommandeTemp = new CarnetCommande();
+    this.commande.carnets = [];
   }
-  ajouterLigneCommande() {
-    this.lignesCommande.push(this.ligneCommandeTemp);
-   //  this.ligneCommandeTemp = null;
+  ajouterLigneCommande() {   
+    this.commande.carnets.push(this.carnetCommandeTemp);
+    this.carnetCommandeTemp = new CarnetCommande();
+  }
+
+  passerLaCommande() {
+    
   }
   
 

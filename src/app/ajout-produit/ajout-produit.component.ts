@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduit } from '../model/produit.model';
+import { ProduitService } from '../services/produit.service';
+import { CategorieService } from '../services/categorie.service';
 
 @Component({
   selector: 'app-ajout-produit',
@@ -7,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AjoutProduitComponent implements OnInit {
 
-  constructor() { }
+  produit: IProduit;
+  constructor(private produitService: ProduitService, private categorieService: CategorieService) { }
 
   ngOnInit(): void {
   }

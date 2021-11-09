@@ -1,27 +1,49 @@
 <br>
 <br>
 <br>
-<div class="card col-md-8 offset-md-2">
+<div class="card col-md-12">
     <div class="card-header">
         <span>Ajout Produit</span>
     </div>
+
+   
     <div class="card-body">
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nom</label>
-            <input type="text" class="form-control">
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="code" class="form-label">Code</label>
+              <input type="text" [(ngModel)]="produit.code" class="form-control">
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="marque" class="form-label">Marque</label>
+              <input type="text" [(ngModel)]="produit.marque" class="form-control">
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Marque</label>
-            <input type="text" class="form-control">
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="modele" class="form-label">Modèle</label>
+              <input type="text" [(ngModel)]="produit.modele" class="form-control">
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="caracteristiques" class="form-label">Caractèristique</label>
+              <input type="text" [(ngModel)]="produit.caracteristiques" class="form-control">
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Quantité en stock</label>
-            <input type="text" class="form-control">
+            
+          
+          <div class="row">
+            
+            <div class="mb-3 col-md-6">
+              <label for="prixUnitaire" class="form-label">Prix unitaire</label>
+              <input type="text" [(ngModel)]="produit.prixUnitaire" class="form-control">
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="quantite" class="form-label">Quantité en stock</label>
+              <input type="text" [(ngModel)]="produit.prixUnitaire" class="form-control">
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Prix</label>
-            <input type="text" class="form-control">
-          </div>
+          
+          
+          
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-default me-md-2" type="button">Anuuler</button>
             <button class="btn btn-primary" type="button">Ajouter</button>

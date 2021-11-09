@@ -25,19 +25,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="exampleFormControlInput1" class="form-label">Produit</label>
-                    <input name="ligneCommandeTemp.produit" type="text" class="form-control">
+                    <input [(ngModel)]="carnetCommandeTemp.qte"  type="text" class="form-control">
                   </div>
                   <div class="col-md-4">
-                    <label for="exampleFormControlInput1" class="form-label">Quantité</label>
-                    <input name="ligneCommandeTemp.quantite" type="text" class="form-control">
+                    <label for="exampleFormControlInput2" class="form-label">Quantité</label>
+                    <input [(ngModel)]="carnetCommandeTemp.prixTotal"  type="text" class="form-control">
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-2 align-self-end">
+                    
                     <button class="btn btn-success" type="button" (click)="ajouterLigneCommande()">Ajouter</button>
                   </div>
                   
             </div>
              
-            <table class="table">
+            <table *ngIf="commande.carnets" class="table">
                 <thead>
                     <tr>
                         <th>Produit</th>
@@ -45,14 +46,14 @@
                         <th>Prix</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let lc of lignesCommande">
+                <tbody *ngFor="let lc of commande.carnets">
                    
                     <tr>
                         <td>
-                            {{lc.produit}}
+                            {{lc.qte}}
                         </td>
                         <td>
-                           {{lc.quantite}} 
+                           {{lc.prixTotal}} 
                         </td>
                         <td>
                             25
@@ -69,7 +70,7 @@
           
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-default me-md-2" type="button">Anuuler</button>
-            <button class="btn btn-primary" type="button">Ajouter</button>
+            <button class="btn btn-primary" type="button" (click)="passerLaCommande()">Commander</button>
           </div>
     </div>
     
