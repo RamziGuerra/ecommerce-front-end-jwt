@@ -10,28 +10,32 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-4">
-                <label for="exampleFormControlInput1"  class="form-label">Numero</label>
-                <input type="text" readonly class="form-control">
+                <label for="field_numero"  class="form-label">Numero</label>
+                <input [(ngModel)]="commande.numero" type="text" class="form-control">
             </div>
             <div class="col-md-4">
-                <label for="exampleFormControlInput1"  class="form-label">Date</label>
-                <input type="text" readonly class="form-control">
+                <label for="field_date"  class="form-label">Date</label>
+                <input [(ngModel)]="commande.date" type="text" readonly class="form-control">
             </div>
             <div class="col-md-4">
-                <label for="exampleFormControlInput1"  class="form-label">Montant</label>
-                <input type="text" readonly class="form-control">
+                <label for="field_montant"  class="form-label">Montant</label>
+                <input [(ngModel)]="commande.prixTotal" type="text" readonly class="form-control">
               </div>
 
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <label for="exampleFormControlInput1" class="form-label">Produit</label>
-                    <input [(ngModel)]="carnetCommandeTemp.qte"  type="text" class="form-control">
+                    <label for="field_produit" class="form-label">Produit</label>
+                    <select [ngModel]="produits" (ngModelChange)="affecterProduit($event)" class="form-control">
+                        <option *ngFor="let p of produits" [ngValue]="p">
+                            {{p.marque}}-{{p.modele}}
+                        </option>
+                    </select>
                   </div>
                   <div class="col-md-4">
                     <label for="exampleFormControlInput2" class="form-label">Quantité</label>
-                    <input [(ngModel)]="carnetCommandeTemp.prixTotal"  type="text" class="form-control">
+                    <input [(ngModel)]="carnetCommandeTemp.qte"  type="text" class="form-control">
                   </div>
                   <div class="col-md-2 align-self-end">
                     
@@ -44,6 +48,7 @@
                 <thead>
                     <tr>
                         <th>Produit</th>
+                        <th>Prix unitaire</th>
                         <th>Quantite</th>
                         <th>Prix</th>
                     </tr>
@@ -52,13 +57,16 @@
                    
                     <tr>
                         <td>
-                            {{lc.qte}}
+                            {{lc.produit.code}}
                         </td>
                         <td>
-                           {{lc.prixTotal}} 
+                            {{lc.produit.prixUnitaire}}
                         </td>
                         <td>
-                            25
+                           {{lc.qte}} 
+                        </td>
+                        <td>
+                            {{lc.prixTotal}}
                         </td>
                     </tr>
                 </tbody>
