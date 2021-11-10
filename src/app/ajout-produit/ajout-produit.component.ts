@@ -3,6 +3,7 @@ import { IProduit, Produit } from '../model/produit.model';
 import { ProduitService } from '../services/produit.service';
 import { CategorieService } from '../services/categorie.service';
 import { ICategorie } from '../model/categorie.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajout-produit',
@@ -12,7 +13,7 @@ import { ICategorie } from '../model/categorie.model';
 export class AjoutProduitComponent implements OnInit {
   categories: ICategorie[];
   produit: IProduit;
-  constructor(private produitService: ProduitService, private categorieService: CategorieService) { }
+  constructor(private produitService: ProduitService, private categorieService: CategorieService, private router: Router) { }
 
   ngOnInit(): void {
     this.produit = new Produit();
@@ -24,10 +25,12 @@ export class AjoutProduitComponent implements OnInit {
   }
 
   annuler(): void {
+    this.router.navigateByUrl('/inventaire');
   }
   ajouterProduit(): void {
     this.produitService.create(this.produit).subscribe(data => {
       this.produit = data.body;
+      this.router.navigateByUrl('/inventaire');
     }, error => {
       console.log(error);
     })

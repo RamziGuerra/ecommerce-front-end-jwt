@@ -1,7 +1,7 @@
 <br>
 <br>
 <br>
-<div class="card col-md-8 offset-md-2">
+<div class="card col-md-10 offset-md-1">
     <div class="card-header">
         <span>Nouvelle commande</span>
 
@@ -51,9 +51,10 @@
                         <th>Prix unitaire</th>
                         <th>Quantite</th>
                         <th>Prix</th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let lc of commande.carnets">
+                <tbody *ngFor="let lc of commande.carnets; let i = index">
                    
                     <tr>
                         <td>
@@ -68,20 +69,19 @@
                         <td>
                             {{lc.prixTotal}}
                         </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" (click)="supprimerLigneCommande(i)">Supprimer</button>
+                        </td>
                     </tr>
                 </tbody>
 
             </table>  
     </div>        
-    <div>      
-           
-
-        
-          
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-default me-md-2" type="button">Anuuler</button>
-            <button class="btn btn-primary" type="button" (click)="passerLaCommande()">Commander</button>
-          </div>
+    <div>          
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-default me-md-2" type="button" (click)="annuler()">Anuuler</button>
+        <button class="btn btn-primary" type="button" (click)="passerLaCommande()">Commander</button>
+        </div>
     </div>
     
     
