@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AjoutCommandeComponent } from './ajout-commande/ajout-commande.component';
 import { AjoutProduitComponent } from './ajout-produit/ajout-produit.component';
 import { CommandesComponent } from './commandes/commandes.component';
+import { EditProduitComponent } from './edit-produit/edit-produit.component';
 import { LoginComponent } from './login/login.component';
 import { ProduitsComponent } from './produits/produits.component';
 
@@ -20,6 +21,10 @@ const routes: Routes = [
     component: AjoutProduitComponent
   },
   {
+    path: 'editer-produit/:id_produit',
+    component: EditProduitComponent
+  },
+  {
     path: 'mes-achats',
     component: CommandesComponent
   },
@@ -27,6 +32,7 @@ const routes: Routes = [
     path: 'passer-commande',
     component: AjoutCommandeComponent
   }
+  
 ];
 
 @NgModule({

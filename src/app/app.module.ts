@@ -10,6 +10,7 @@ import { AjoutProduitComponent } from './ajout-produit/ajout-produit.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EditProduitComponent } from './edit-produit/edit-produit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProduitsComponent,
     AjoutCommandeComponent,
     AjoutProduitComponent,
-    LoginComponent
+    LoginComponent,
+    EditProduitComponent
     
   ],
   imports: [
