@@ -61,7 +61,14 @@
           
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-default me-md-2" type="button" (click)="annuler()">Annuler</button>
-            <button class="btn btn-primary" type="button" (click)="ajouterProduit()">Ajouter</button>
+            <button [disabled]=  "produit.code === undefined ||
+                                  produit.marque === undefined ||
+                                  produit.modele === undefined ||
+                                  produit.categorie === undefined ||
+                                  produit.prixUnitaire === undefined ||
+                                  produit.quantite === undefined ||
+                                  produit.caracteristiques === undefined"
+            class="btn btn-primary" type="button" (click)="ajouterProduit()">Ajouter</button>
           </div>
     </div>
     
