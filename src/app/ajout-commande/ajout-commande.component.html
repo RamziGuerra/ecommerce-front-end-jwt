@@ -39,7 +39,8 @@
                   </div>
                   <div class="col-md-2 align-self-end">
                     
-                    <button class="btn btn-success" type="button" (click)="ajouterLigneCommande()">Ajouter</button>
+                    <button *ngIf="!modeUpdate" class="btn btn-success" type="button" (click)="ajouterLigneCommande()">Ajouter</button>
+                    <button *ngIf="modeUpdate" class="btn btn-success" type="button" (click)="updateLigneCommande()">Modifier</button>
                   </div>
                   
             </div>
@@ -70,7 +71,17 @@
                             {{lc.prixTotal}}
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-danger" (click)="supprimerLigneCommande(i)">Supprimer</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-sm btn-danger" (click)="supprimerLigneCommande(i)">Supprimer</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-sm btn-info text-white" (click)="editerLigneCommande(i)">Editer</button>
+                                </div>
+                                
+                                
+    
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -79,7 +90,7 @@
     </div>        
     <div>          
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-default me-md-2" type="button" (click)="annuler()">Anuuler</button>
+        <button class="btn btn-default me-md-2" type="button" (click)="annuler()">Annuler</button>
         <button class="btn btn-primary" type="button" (click)="passerLaCommande()">Commander</button>
         </div>
     </div>

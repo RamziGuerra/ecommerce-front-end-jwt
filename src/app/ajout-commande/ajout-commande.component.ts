@@ -16,12 +16,15 @@ export class AjoutCommandeComponent implements OnInit {
 
   commande : ICommande;
   carnetCommandeTemp: ICarnetCommande;
+  modeUpdate: boolean;
+  indexUpdate: number;
   produits: IProduit[];
 
   
   constructor(private commandeService: CommandeService, private produitService: ProduitService,private router: Router) { }
 
   ngOnInit(): void {
+    this.modeUpdate = false;
     this.commande = new Commande();
     this.carnetCommandeTemp = new CarnetCommande();
     this.commande.date = moment();
@@ -43,6 +46,24 @@ export class AjoutCommandeComponent implements OnInit {
   supprimerLigneCommande(index: any) {
     this.commande.prixTotal = this.commande.prixTotal - this.commande.carnets[index].prixTotal;
     this.commande.carnets.splice(index, index + 1);
+  }
+  editerLigneCommande(index: any) {
+
+    this.modeUpdate = true;
+    this.indexUpdate = index;
+    this.carnetCommandeTemp.qte = this.commande.carnets[index].qte;
+    this.carnetCommandeTemp.prixUnitaire = this.commande.carnets[index].prixUnitaire;
+    this.carnetCommandeTemp.produit = this.commande.carnets[index].produit;
+  }
+  updateLigneCommande() {
+    this.commande.prixTotal = this.commande.prixTotal - this.commande.carnets[this.indexUpdate].prixTotal;
+    this.carnetCommandeTemp.prixTotal = this.carnetCommandeTemp.qte * this.carnetCommandeTemp.produit.prixUnitaire;
+    this.commande.prixTotal = this.commande.prixTotal + this.carnetCommandeTemp.prixTotal;
+
+    this.commande.carnets[this.indexUpdate] = this.carnetCommandeTemp ;
+    this.carnetCommandeTemp = new CarnetCommande();
+    this.modeUpdate = false;
+
   }
   affecterProduit(event) {
     this.carnetCommandeTemp.produit = event
