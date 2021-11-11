@@ -39,8 +39,8 @@
                   </div>
                   <div class="col-md-2 align-self-end">
                     
-                    <button *ngIf="!modeUpdate" class="btn btn-success" type="button" (click)="ajouterLigneCommande()">Ajouter</button>
-                    <button *ngIf="modeUpdate" class="btn btn-success" type="button" (click)="updateLigneCommande()">Modifier</button>
+                    <button [disabled]= "carnetCommandeTemp.qte === undefined || carnetCommandeTemp.produit === undefined" *ngIf="!modeUpdate" class="btn btn-success" type="button" (click)="ajouterLigneCommande()">Ajouter</button>
+                    <button [disabled]= "carnetCommandeTemp.qte === undefined || carnetCommandeTemp.produit === undefined" *ngIf="modeUpdate" class="btn btn-success" type="button" (click)="updateLigneCommande()">Modifier</button>
                   </div>
                   
             </div>

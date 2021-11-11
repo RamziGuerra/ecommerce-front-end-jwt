@@ -37,11 +37,13 @@ export class AjoutCommandeComponent implements OnInit {
     });
   }
   ajouterLigneCommande() {
+    
     this.carnetCommandeTemp.prixTotal = this.carnetCommandeTemp.produit.prixUnitaire * this.carnetCommandeTemp.qte;
-    this.commande.prixTotal = this.commande.prixTotal + this.carnetCommandeTemp.prixTotal;
-
+    this.commande.prixTotal = this.commande.prixTotal + this.carnetCommandeTemp.prixTotal; 
+    let currentProduit = this.carnetCommandeTemp.produit;
     this.commande.carnets.push(this.carnetCommandeTemp);
     this.carnetCommandeTemp = new CarnetCommande();
+    this.carnetCommandeTemp.produit = currentProduit;
   }
   supprimerLigneCommande(index: any) {
     this.commande.prixTotal = this.commande.prixTotal - this.commande.carnets[index].prixTotal;
