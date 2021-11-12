@@ -25,8 +25,10 @@
             </div>
             <div class="mb-3 col-md-6">
               <label class="form-control-label" for="field_categorie">Categorie</label>
-                <select [ngModel]="categories" class="form-control"
-                    (ngModelChange)="affecterCategorie($event)">
+                <select [(ngModel)]="produit.categorie" class="form-control"
+                    (ngModelChange)="affecterCategorie($event)"
+                    
+                    >
                     <option *ngFor=" let c of categories" [ngValue]="c">
                         {{c.libelle}}
                     </option>
@@ -57,11 +59,17 @@
 
           </div>
           <hr>
-          
-          
+                
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button class="btn btn-default me-md-2" type="button" (click)="annuler()">Annuler</button>
-            <button class="btn btn-primary" type="button" (click)="updateProduit()">Mettre à jour</button>
+            <button [disabled]=  "produit.code === null ||
+            produit.marque === null ||
+            produit.modele === null ||
+            produit.categorie === null ||
+            produit.prixUnitaire === null ||
+            produit.quantite === null ||
+            produit.caracteristiques === null"
+            class="btn btn-primary" type="button" (click)="updateProduit()">Mettre à jour</button>
           </div>
     </div>
     
